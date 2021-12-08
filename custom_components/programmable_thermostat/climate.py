@@ -407,10 +407,10 @@ class ProgrammableThermostat(ClimateEntity, RestoreEntity):
         if (((mode == "cool" and not self._hvac_mode == HVAC_MODE_HEAT) or \
            (mode == "heat" and not self._hvac_mode == HVAC_MODE_COOL)) and \
            not self._hvac_mode == HVAC_MODE_HEAT_COOL):
-            self._hvac_action = CURRENT_HVAC_OFF
+            self._hvac_action = CURRENT_HVAC_IDLE
             _LOGGER.debug("climate.%s - new action %s", self._name, self._hvac_action)
         elif self._hvac_mode == HVAC_MODE_HEAT_COOL and delta <= 0:
-            self._hvac_action = CURRENT_HVAC_OFF
+            self._hvac_action = CURRENT_HVAC_IDLE
             _LOGGER.debug("climate.%s - new action %s", self._name, self._hvac_action)
             if abs(delta) >= self._tolerance and entities != None:
                 self._set_hvac_action_on(mode=mode_2)
